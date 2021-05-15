@@ -41,7 +41,7 @@ function Show(props) {
         <input
           type="text"
           value={editForm.countryOfOrigin}
-          name="Country of Origin"
+          name="countryOfOrigin"
           placeholder="Country of Origin"
           onChange={handleChange}
         />
