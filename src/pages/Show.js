@@ -4,7 +4,7 @@ function Show(props) {
     const cheese = props.cheese
     const cheesy = cheese.find(p => p._id === id)
 
-    const [editForm, setEditForm] = useState(person)
+    const [editForm, setEditForm] = useState(cheesy)
 
   // handleChange function for form
   const handleChange = event => {
@@ -13,7 +13,7 @@ function Show(props) {
 
   const handleSubmit = event => {
     event.preventDefault()
-    props.updateCheese(editForm, person._id)
+    props.updateCheese(editForm, cheesy._id)
     props.history.push("/")
   }
 
