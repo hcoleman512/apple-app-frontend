@@ -31,7 +31,7 @@ function Index(props) {
       <div key={cheesy._id} className="cheesy">
         <Link to={`/cheese/${cheesy._id}`}><h1>{cheesy.name}</h1></Link>
         <img src={cheesy.image} alt={cheesy.name} />
-        <h3>{cheesy.name}</h3>
+        <h3>{cheesy.countryOfOrigin}</h3>
       </div>
     ));
   };
