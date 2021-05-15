@@ -61,7 +61,7 @@ function Main(props) {
           path="/cheese/:id"
           render={(rp) => (
             <Show
-            Cheese={cheese}
+            cheese={cheese}
               updateCheese={updateCheese}
               deleteCheese={deleteCheese}
               {...rp}

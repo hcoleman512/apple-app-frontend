@@ -52,7 +52,7 @@ function Index(props) {
         <input
           type="text"
           value={newForm.countryOfOrigin}
-          name="Country of Origin"
+          name="CountryOfOrigin"
           placeholder="Country of Origin"
           onChange={handleChange}
         />
