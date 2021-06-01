@@ -35,11 +35,10 @@ function Index(props) {
       <div key={apples._id} className="apples">
         <Link to={`/apple/${apples._id}`}><h1>{apples.name}</h1></Link>
         <img src={apples.image} alt={apples.name} />
-        <h3>{apples.countryOfOrigin}
-            {apples.flavor}
-            {apples.uses}
-        </h3>
-      </div>
+        <h3>{apples.countryOfOrigin}   </h3>
+        <h4>{apples.flavor}</h4>
+        <h5>{apples.uses}</h5>
+          </div>
     ));
   };
 
