@@ -6,6 +6,8 @@ function Index(props) {
   const [newForm, setNewForm] = useState({
     name: "",
     countryOfOrigin: "",
+    uses: "",
+    flavor: "",
     image: "",
   });
 
@@ -17,21 +19,26 @@ function Index(props) {
   // handle submit function for form
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.createCheese(newForm);
+    props.createApple(newForm);
     setNewForm({
       name: "",
       countryOfOrigin: "",
+      uses: "",
+      flavor: "",
       image: "",
     });
   };
 
   // loaded function
   const loaded = () => {
-    return props.cheese.map((cheesy) => (
-      <div key={cheesy._id} className="cheesy">
-        <Link to={`/cheese/${cheesy._id}`}><h1>{cheesy.name}</h1></Link>
-        <img src={cheesy.image} alt={cheesy.name} />
-        <h3>{cheesy.countryOfOrigin}</h3>
+    return props.apple.map((apples) => (
+      <div key={apples._id} className="apples">
+        <Link to={`/apple/${apples._id}`}><h1>{apples.name}</h1></Link>
+        <img src={apples.image} alt={apples.name} />
+        <h3>{apples.countryOfOrigin}
+            {apples.flavor}
+            {apples.uses}
+        </h3>
       </div>
     ));
   };
@@ -58,14 +65,28 @@ function Index(props) {
         />
         <input
           type="text"
+          value={newForm.uses}
+          name="uses"
+          placeholder="Uses"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          value={newForm.flavor}
+          name="flavor"
+          placeholder="Flavor"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
           value={newForm.image}
           name="image"
           placeholder="Image URL"
           onChange={handleChange}
         />
-        <input type="submit" value="Add Cheese" />
+        <input type="submit" value="Add Apples" />
       </form>
-      {props.cheese ? loaded() : loading()}
+      {props.apple ? loaded() : loading()}
     </section>
   );
 }

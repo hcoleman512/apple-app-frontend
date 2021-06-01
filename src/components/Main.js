@@ -4,66 +4,66 @@ import Index from "../pages/Index";
 import Show from "../pages/Show";
 
 function Main(props) {
-  const [cheese, setCheese] = useState(null);
+  const [apple, setApple] = useState(null);
 
-  const URL = "https://cheeseapp-hc.herokuapp.com/cheese/";
+  const URL = "https://appleap.herokuapp.com/apple";
 
-  const getCheese = async () => {
+  const getApple = async () => {
     const response = await fetch(URL);
     const data = await response.json();
-    setCheese(data);
+    setApple(data);
   };
 
-  const createCheese = async (cheesy) => {
+  const createApple = async (apples) => {
     // make post request to create people
     await fetch(URL, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(cheesy),
+      body: JSON.stringify(apples),
     });
     // update list of people
-    getCheese();
+    getApple();
   };
 
-  const updateCheese = async (cheesy, id) => {
+  const updateApple = async (apples, id) => {
     // make post request to create people
     await fetch(URL + id, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(cheesy),
+      body: JSON.stringify(apples),
     })
     // update list of people
-    getCheese()
+    getApple()
   }
 
-  const deleteCheese = async id => {
+  const deleteApple = async id => {
     // make post request to create people
     await fetch(URL + id, {
       method: "delete",
     })
     // update list of people
-    getCheese()
+    getApple()
   }
 
-  useEffect(() => getCheese(), []);
+  useEffect(() => getApple(), []);
 
   return (
     <main>
       <Switch>
         <Route exact path="/">
-          <Index cheese={cheese} createCheese={createCheese} />
+          <Index apple={apple} createApple={createApple} />
         </Route>
         <Route
-          path="/cheese/:id"
+          path="/apple/:id"
           render={(rp) => (
             <Show
-            cheese={cheese}
-              updateCheese={updateCheese}
-              deleteCheese={deleteCheese}
+            apple={apple}
+              updateApple={updateApple}
+              deleteApple={deleteApple}
               {...rp}
             />
           )}

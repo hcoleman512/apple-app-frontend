@@ -1,10 +1,10 @@
 import { useState } from "react"
 function Show(props) {
     const id = props.match.params.id
-    const cheese = props.cheese
-    const cheesy = cheese.find(p => p._id === id)
+    const apple = props.apple
+    const apples = apple.find(p => p._id === id)
 
-    const [editForm, setEditForm] = useState(cheesy)
+    const [editForm, setEditForm] = useState(apples)
 
   // handleChange function for form
   const handleChange = event => {
@@ -13,21 +13,21 @@ function Show(props) {
 
   const handleSubmit = event => {
     event.preventDefault()
-    props.updateCheese(editForm, cheesy._id)
+    props.updateApple(editForm, apples._id)
     props.history.push("/")
   }
 
-  const removeCheese = () => {
-    props.deleteCheese(cheesy._id)
+  const removeApple = () => {
+    props.deleteApple(apples._id)
     props.history.push("/")
   }
 
     return (
-      <div className="cheesy">
-        <h1>{cheesy.name}</h1>
-        <h2>{cheesy.countryOfOrigin}</h2>
-        <img src={cheesy.image} alt={cheesy.name} />
-        <button id="delete" onClick={removeCheese}>
+      <div className="apples">
+        <h1>{apples.name}</h1>
+        <h2>{apples.countryOfOrigin}</h2>
+        <img src={apples.image} alt={apples.name} />
+        <button id="delete" onClick={removeApple}>
         DELETE
       </button>
       <form onSubmit={handleSubmit}>
@@ -47,12 +47,26 @@ function Show(props) {
         />
         <input
           type="text"
+          value={editForm.uses}
+          name="uses"
+          placeholder="Uses"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          value={editForm.flavor}
+          name="flavor"
+          placeholder="Flavor"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
           value={editForm.image}
           name="image"
           placeholder="image URL"
           onChange={handleChange}
         />
-        <input type="submit" value="Add Cheese" />
+        <input type="submit" value="edit Apples" />
       </form>
       </div>
     )
